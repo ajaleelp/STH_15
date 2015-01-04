@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
-		json_resp = {name: @user.name,teamName: @user.team.present? ? @user.team.name : 'not assigned',remainingsteps: 10 - @user.team.score,pvt_ch: 'channel '+@user.team.id.to_s}.to_json
+		json_resp = @user.present? ? {name: @user.name,teamName: @user.team.present? ? @user.team.name : 'not assigned',remainingsteps: 10 - @user.team.score,pvt_ch: 'channel '+@user.team.id.to_s}.to_json : {status: "No user found"}
 		respond_with json_resp
 	end
 
