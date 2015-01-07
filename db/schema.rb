@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150104033234) do
+ActiveRecord::Schema.define(version: 20150107185035) do
+
+  create_table "clues", force: true do |t|
+    t.string   "clue_img"
+    t.string   "map_image"
+    t.string   "pass"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "comments", force: true do |t|
     t.string   "body"

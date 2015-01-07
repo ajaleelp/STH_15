@@ -11,6 +11,10 @@ Rails.application.routes.draw do
 
   get 'users/:id/map' => 'users#map'
 
+  get 'teams/:id/game' => 'teams#game'
+
+  put 'teams/:id/game' => 'teams#gamepass'
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.

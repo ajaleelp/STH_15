@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  clue_img: MyString
+  map_image: MyString
+  pass: MyString
+
+two:
+  clue_img: MyString
+  map_image: MyString
+  pass: MyString
