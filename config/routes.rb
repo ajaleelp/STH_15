@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   resources :users
 
+  resources :teams
+
   get '/register' => 'users#new'
 
   get 'users/:id/show' => 'users#show'

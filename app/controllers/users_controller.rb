@@ -19,7 +19,8 @@ class UsersController < ApplicationController
 	end
 
 	def map
-		json_resp = {clue_img:'imgbase64string', map_img:'mapbase64string'}.to_json
+		encoded = Base64.encode64("clue") 
+		json_resp = {clue_img: Base64.encode64("clue"), map_img:Base64.decode64(encoded)}.to_json
 		respond_with json_resp
 	end
 
