@@ -4,8 +4,8 @@ class TeamsController < ApplicationController
 
 	def create
 		@team = Team.new(team_params)
-    @team.save
-    respond_with @team
+    	@team.save
+    	respond_with @team
 	end
 
 	def index
@@ -14,17 +14,18 @@ class TeamsController < ApplicationController
 	end
 
 	def game
-		@team = Team.find(params[:id])
+		@team = Team.friendly.find(params[:id])
 		@clue = Clue.find(@team.score)
 		json_resp = {clue_img: @clue.clue_img, map_img: @clue.map_image}.to_json
 		respond_with json_resp
 	end
 
 	def gamepass
-		@team = Team.find(params[:id])
+		@team = Team.friendly.find(params[:id])
 		@clue = Clue.find(@team.score)
 		json_resp = {pass: @clue.pass}.to_json
 		respond_with json_resp
+
 	end
 
   private

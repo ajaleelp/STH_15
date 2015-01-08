@@ -9,11 +9,11 @@ Rails.application.routes.draw do
 
   get 'users/:id/show' => 'users#show'
 
-  get 'users/:id/map' => 'users#map'
+  # get 'users/:id/map' => 'users#map'
 
   get 'teams/:id/game' => 'teams#game'
 
-  put 'teams/:id/game' => 'teams#gamepass'
+  # put 'teams/:id/game' => 'teams#gamepass'
 
 
 
