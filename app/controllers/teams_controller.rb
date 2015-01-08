@@ -1,6 +1,6 @@
 class TeamsController < ApplicationController
 
-	respond_to :json, :html
+	respond_to :json
 
 	def create
 		@team = Team.new(team_params)
@@ -24,8 +24,12 @@ class TeamsController < ApplicationController
 		@team = Team.friendly.find(params[:id])
 		@clue = Clue.find(@team.score)
 		json_resp = {pass: @clue.pass}.to_json
-		respond_with json_resp
+		respond_with json_resp, location: @team
+	end
 
+	def score
+		json_resp = Team.all.map{|user| ("name:#{user.name},score:#{user.score}").to_json}.to_json
+		respond_with json_resp
 	end
 
   private

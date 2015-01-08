@@ -13,7 +13,9 @@ Rails.application.routes.draw do
 
   get 'teams/:id/game' => 'teams#game'
 
-  # put 'teams/:id/game' => 'teams#gamepass'
+  post 'teams/:id/game' => 'teams#gamepass'
+
+  get '/score' => 'teams#score'
 
 
 
