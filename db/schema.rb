@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150107185035) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "clues", force: true do |t|
     t.string   "clue_img"
     t.string   "map_image"
@@ -30,7 +33,7 @@ ActiveRecord::Schema.define(version: 20150107185035) do
     t.datetime "updated_at"
   end
 
-  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "teams", force: true do |t|
     t.string   "name"
@@ -49,6 +52,6 @@ ActiveRecord::Schema.define(version: 20150107185035) do
     t.integer  "team_id"
   end
 
-  add_index "users", ["team_id"], name: "index_users_on_team_id"
+  add_index "users", ["team_id"], name: "index_users_on_team_id", using: :btree
 
 end
