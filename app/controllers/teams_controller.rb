@@ -1,6 +1,12 @@
 class TeamsController < ApplicationController
 
-	respond_to :json
+	respond_to :json, :html
+
+	def create
+		@team = Team.new(team_params)
+    @team.save
+    respond_with @team
+	end
 
 	def index
 		@teamnames = Team.all.pluck(:name)
@@ -20,4 +26,10 @@ class TeamsController < ApplicationController
 		json_resp = {pass: @clue.pass}.to_json
 		respond_with json_resp
 	end
+
+  private
+  def team_params
+    params.require(:team).permit(:name,:score)
+  end
+
 end

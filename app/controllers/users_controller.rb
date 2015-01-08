@@ -1,6 +1,6 @@
 class UsersController < ApplicationController 
 
-	respond_to :json
+	respond_to :json, :html
 
 	def index
 		@user = User.all
