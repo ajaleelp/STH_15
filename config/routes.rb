@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
   get '/score' => 'teams#score'
 
+  get '/graph' => 'teams#graph'
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.
