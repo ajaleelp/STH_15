@@ -53,11 +53,11 @@ class TeamsController < ApplicationController
 
   def graph
     @teams = Team.all
-    json_resp = []
+    json_resp = @teams.to_json(:only => :name, :include => {:solvetimes => { :only => :solved_by}})
     # @teams.each do |team|
     #   json_resp << {team: team.name, times: Solvetime.where(team_id: team.id)}.pluck(:solved_at)}
     # end
-    json_resp.to_json
+    # json_resp.to_json
     respond_with json_resp
   end
 
