@@ -28,8 +28,14 @@ gem 'spring',        group: :development
 
 gem 'friendly_id'
 
+gem 'jwt'
+
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
+
+gem 'faye-rails', '~> 2.0.0'
+
+gem 'thin'
 
 # Use unicorn as the app server
 # gem 'unicorn'

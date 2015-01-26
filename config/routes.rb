@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   get '/graph' => 'teams#graph'
 
+  post '/authenticate' => 'secured#auth'
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.
