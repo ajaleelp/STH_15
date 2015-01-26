@@ -1,19 +1,22 @@
 Rails.application.routes.draw do
   root 'welcome#index'
 
+namespace :api do 
   resources :users
 
   resources :teams
 
-  get '/register' => 'users#new'
-
-  get 'users/:id/show' => 'users#show'
+    get 'users/:id/show' => 'users#show'
 
   # get 'users/:id/map' => 'users#map'
 
   get 'teams/:id/game' => 'teams#game'
 
   post 'teams/:id/game' => 'teams#gamepass'
+  
+end
+
+  get '/register' => 'users#new'
 
   get '/score' => 'teams#score'
 
