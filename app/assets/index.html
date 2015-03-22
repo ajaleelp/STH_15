@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" ng-app="TreasureHunt">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    <!-- Optional theme -->
+    <!--<link href='https://fonts.googleapis.com/css?family=Pirata+One' rel='stylesheet' type='text/css'>-->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+    <link rel="stylesheet" href="stylesheets/bootstrap/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="stylesheets/font-awesome/font-awesome.css">
+    <link rel="stylesheet" href="stylesheets/animate.css">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+</head>
+
+<body>
+    
+    <!--[if lt IE 7]> <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p> <![endif]-->
+    <!-- Add your site or application content here -->
+    <!--NAvigation content start-->
+    <div id="nav-main" class="navbar navbar-inverse" ng-controller="NavController">
+        <div class="container">
+            <div class="navbar-header"> <a class="navbar-brand" href="#">STH '15</a> </div>
+            <simple-auth-secured>
+            <div ng-cloak class="navbar-collapse navbar-inverse-collapse">
+                <ul class="nav navbar-nav">
+                    <simple-auth-role role="admin">
+                    <li class="active nav-item"><a href="#team-content"><span class="visible-xs-inline"><i class="fa fa-users"></i></span><span class="hidden-xs">Team</span></a> </li>
+                    <li class="nav-item"><a href="#/game"><span class="visible-xs-inline"><i class="fa fa-search"></i></span><span class="hidden-xs">Game</span></a> </li>
+                    <li class="nav-item"><a href="#/leaderboard"><span class="visible-xs-inline"><i class="fa fa-bar-chart-o"></i></span><span class="hidden-xs">LeaderBoard</span></a> </li>
+                    </simple-auth-role>
+                    <simple-auth-role role="admin">
+                    <li class="active nav-item"><a href="#team-content"><span class="visible-xs-inline"><i class="fa fa-users"></i></span><span class="hidden-xs">Team</span></a> </li>
+                    <li class="nav-item"><a href="#/game"><span class="visible-xs-inline"><i class="fa fa-search"></i></span><span class="hidden-xs">Game</span></a> </li>
+                    <li class="nav-item"><a href="#/leaderboard"><span class="visible-xs-inline"><i class="fa fa-bar-chart-o"></i></span><span class="hidden-xs">LeaderBoard</span></a> </li>
+                    </simple-auth-role>
+                </ul>
+                <ul  class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="javascripts/vendor/holder/holder.js/20x20/auto/textmode:exact" class="img-thumbnail" />&nbsp;<simple-Auth-credentials field="username"></simple-auth-credentials> 
+                                <b class="caret"></b> 
+                            </a>
+                        <ul class="orange-bg dropdown-menu">
+                            <li><a >Account settings</a> </li>
+                            <li class="divider"></li>
+                            <li><a simple-auth-logout>Log out</a> </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            </simple-auth-secured>
+            <simple-auth-unsecured>
+                <div ng-cloak class="hidden-xs navbar-collapse navbar-inverse-collapse">
+                <ul  class="nav navbar-nav navbar-right">
+                    <li><a href="#/registration">Register</a></li>
+                </ul>
+            </div>
+            </simple-auth-unsecured>
+        </div>
+    </div>
+    <div class="container-fluid visible-xs visible-sm" ng-controller="MobileChatController">
+        <div ng-show="showChat" class="chat-mobile-overlay">
+            </div>
+        <div ng-show="showChat" class="chat-mobile-container">
+            <div class="row">
+        <ng-include src="'partials/newsfeed.tmpl.html'"></ng-include>
+        </div>
+        </div>
+        <div class="chat-mobile-icon" toggle-animation watch-this="unreadCount" ng-click="toggleChatOverlay()">
+            <div class="unread-count" ng-show="unreadCount>0">
+            <span ng-bind="unreadCount"></span>
+            </div>
+            <div class="chat-icon-div">
+                <i class="fa fa-comments fa-4x"></i>
+            </div>
+        
+        </div>
+    </div>
+    <!--NAvigation content end-->
+    <div id="content" class="container">
+         
+        <div class="row">
+            <div ng-view></div>
+            <simple-auth-secured>
+            <div class="col-lg-4 col-md-4 hidden-sm hidden-xs">
+                <ng-include src="'partials/newsfeed.tmpl.html'"></ng-include>
+            </div>
+            </simple-auth-secured>
+        </div>
+    </div>
+    <div id="footer-main" class="container text-center">
+        <footer class="footer navbar navbar-inverse">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-offset-4 col-lg-4">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/">© 2015 Vertechs.All rights reserved</a> </li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <!-- Latest compiled and minified JavaScript -->
+    
+    <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+    <script src="javascripts/vendor/holder/holder.js"></script>
+    <script src="javascripts/vendor/moment/moment.js"></script>
+    <script src="javascripts/vendor/faye/faye-browser.js"></script>
+    <script src="javascripts/vendor/jquery/jquery-1.11.1.js"></script>
+    <script src="javascripts/vendor/bootstrap/bootstrap.js"></script>
+    <script src="javascripts/vendor/parsley/parsley.js"></script>
+    <script src="javascripts/vendor/angular/angular.js"></script>
+    <script src="javascripts/vendor/angular/angular-route.js"></script>
+    <script src="javascripts/vendor/angular/angular-animate.js"></script>
+    <script src="javascripts/mvc/directives/auth.directive.js"></script>
+    <script src="javascripts/mvc/directives/scroller.directive.js"></script>
+    <script src="javascripts/mvc/directives/angular-chartist.js"></script>
+    <script src="javascripts/mvc/directives/toggle-animation.directive.js"></script>
+    <script src="javascripts/mvc/directives/unique-validator.directive.js"></script>
+    <script src="javascripts/mvc/app.js"></script>
+    <script src="javascripts/mvc/filters/MomentFilter.js"></script>
+    <script src="javascripts/mvc/directives/spinner.directive.js"></script>
+    <script src="javascripts/mvc/directives/checkpassword.directive.js"></script>
+    <script src="javascripts/mvc/directives/confirm-modal.directive.js"></script>
+    <script src="javascripts/mvc/directives/file-handler.directive.js"></script>
+    <script src="javascripts/mvc/services/FayeClientFactory.js"></script>
+    
+    <script src="javascripts/mvc/services/TeamService.js"></script>
+    <script src="javascripts/mvc/services/UserService.js"></script>
+    <script src="javascripts/mvc/services/NewsFeedService.js"></script>
+    <script src="javascripts/mvc/services/CluesService.js"></script>
+    <script src="javascripts/mvc/controllers/NavController.js"></script>
+    <script src="javascripts/mvc/controllers/HomeController.js"></script>
+    <script src="javascripts/mvc/controllers/LeaderBoardController.js"></script>
+    <script src="javascripts/mvc/controllers/GameController.js"></script>
+    <script src="javascripts/mvc/controllers/MobileChatController.js"></script>
+    <script src="javascripts/mvc/controllers/NewsFeedController.js"></script>
+    <script src="javascripts/mvc/controllers/AdminController.js"></script>
+    <script src="javascripts/mvc/controllers/CluesController.js"></script>
+    <script src="javascripts/mvc/controllers/AdminCluesController.js"></script>
+    <script src="javascripts/mvc/controllers/RegistrationController.js"></script>
+</body>
+
+</html>
